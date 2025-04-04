@@ -1,0 +1,54 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .divi{background-color: black;
+        height: 300px;
+        width: 300px;
+    }
+#img{height: 300px;width: 300px;}
+
+</style>
+
+<body>
+    <!-- <div  class="divi" onclick="func1()"> </div> -->
+    <!-- <div  class="divi" onmouseleave="func1()"> </div> -->
+     <!-- <button class="btn" type="button" onclick="func1()">click to print</button>
+     <h1 id="name">hiii</h1>
+     -->
+     <img id="img"   src="bhai1.png" alt="">
+     <button onclick="changepicture()">changepicture</button>
+</body>
+
+<script>
+    // function func1(){
+    //     // alert("be carefull")
+    //     console.log("hello G")
+        // document.getElementById('name').innerHTML="bye"
+    
+     
+    // }
+  
+    function changepicture(){
+        console.log("hello bhai")
+      s= document.getElementById('img').src
+    //    console.log(s)
+
+
+       
+    if(s=='http://127.0.0.1:5500/bhai1.png'){
+    
+        document.getElementById('img').src='bhai2.png'
+    }   
+     else(
+     document.getElementById('img').src='bhai1.png'
+    
+)
+
+    }
+      
+</script>
+</html>

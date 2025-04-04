@@ -1,0 +1,87 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+     .baap{border: solid;
+    border-color: red;}
+
+    .div1{
+        margin-top: 30px;  
+        text-align: center;   
+    }
+    .main{
+     display: flex;
+ margin-left: 300px; 
+ margin-top: 50px; 
+  }
+  .div2{border: solid;color: red; margin:30px;}
+  .div3{border: solid;color: red;margin: 30px;}
+  .div4{border: solid;color: red;margin: 30px;}
+
+
+  
+</style>
+<body><div class="baap">
+        <div class="div1"><img id="img1" src="flower1.jpg" alt="" > </div>
+
+        <div  class="main">
+            <div class="div2" onmouseenter="changepic()" onmouseleave="changepicx()"> <img id="img2" src="flower2.jpg" alt="" ></div>
+
+            <div class="div3" onmouseenter="changepic2()"onmouseleave="changepicx()"> <img id="img3" src="flower3.jpg" alt=""  ></div>
+
+            <div class="div4" onmouseenter="changepic3()"onmouseleave="changepicx()"><img id="img4" src="flower4.jpg" alt="" ></div>
+        </div>
+    </div>
+</body>
+<script>
+    function changepic(){
+        // console.log("hello")
+        // s=document.getElementById('img1').src
+        // console.log(s)
+
+     if(s='http://127.0.0.1:5500/flower1.jpg') {
+        document.getElementById('img1').src='flower2.jpg'
+     }
+     else(
+     document.getElementById('img1').src='flower1.png'
+    )
+    }
+    function changepic2(){
+        // console.log("hello")
+        // console.log(s)
+
+     if(s='http://127.0.0.1:5500/flower1.jpg') {
+        document.getElementById('img1').src='flower3.jpg'
+     }
+     else(
+     document.getElementById('img1').src='flower3.png'
+    )
+    }
+    function changepic3(){
+        // console.log("hello")
+        // console.log(s)
+
+     if(s='http://127.0.0.1:5500/flower1.jpg') {
+        document.getElementById('img1').src='flower4.jpg'
+     }
+     else(
+     document.getElementById('img1').src='flower4.png'
+    )
+    }
+    function changepicx(){
+        // console.log("hello")
+        // console.log(s)
+
+     if(s='http://127.0.0.1:5500/flower1.jpg') {
+        document.getElementById('img1').src='flower1.jpg'
+     }
+     else(
+     document.getElementById('img1').src='flower1.png'
+    )
+    }
+    
+</script>
+</html>

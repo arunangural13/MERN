@@ -1,0 +1,36 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <script>
+        function checkmail(){
+            mail=document.getElementById('mail').value
+            console.log(mail)
+        
+
+   email_exp= /^[a-zA-Z0-9]+@[a-zA-Z0-9]+.[a-z]{2,6}$/
+    
+        console.log(email_exp.test (mail))
+
+        res= email_exp.test(mail)
+        
+        if (res){
+        document.getElementById('res').innerHTML="correct email"
+        }
+        else{
+        docment.getElementById('res').innerHTML="this is inccorect email"
+        }
+        }
+
+    </script>
+</head>
+<body>
+    <input type="text" id="mail">
+    <button onclick="checkmail()">check </button>
+    
+</body>
+<h3 id="res"></h3>
+</html>

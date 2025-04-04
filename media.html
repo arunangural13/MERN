@@ -1,0 +1,50 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+            .box{
+                text-align: center;
+                font-size: 50px;
+                background-color: aqua;
+                display: none;
+             }
+             @media only screen and (max-width:300px){
+                    #box1{
+                        display: block;
+                    }
+             }
+             @media (min-width:300px) and (max-width:500px){
+                #box2{
+                    display: block;
+                    /* background-color: n emf; */
+                    background-color: yellow;
+                }
+            }
+                @media (min-width:500px) and (max-width:800px){
+                #box3{
+                    display: block;
+                    /* background-color: n emf; */
+                    background-color: rgb(27, 96, 46);
+                }
+            }
+                @media (min-width:800px) {
+                    #box4{
+                        display: block;
+                        background-color:rgb(239, 8, 166);
+                    }
+             }
+    </style>
+</head>
+<body>
+      <div class="box" id="box1">This is html class</div>
+      <div class="box" id="box2">This is CSS Class</div>
+      <div class="box" id="box3">This is Javascript Class</div>
+      <div class="box" id="box4">this is PHP Class</div>
+</body>
+</html>

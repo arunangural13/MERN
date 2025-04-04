@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moving Car Animation</title>
+   
+    <style>
+        body {
+            background-image: url(full\ road.avif) ;
+            background-size: cover;
+        }
+
+        .road {
+            position: absolute;
+            bottom: 10px;
+            width: 110%;
+            height: 200px;
+            margin-left: -10px;
+            margin-right: -10px;
+            background-size: contain;
+        }
+
+        .car-container {
+            position: absolute;
+            bottom: -10px;
+            left: -200px; 
+            width: 300px;
+            animation: moveCar 5s linear infinite;
+        }
+
+        .car {
+            width: 100%;
+            position: relative;
+        }
+
+        .wheel1 {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            animation: rotateWheels 0.8s linear infinite;
+        }
+
+        .wheel2 {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            animation: rotateWheels 0.8s linear infinite;
+        }
+
+        .wheel1 {
+            left: 40px;
+            bottom: 93px;
+        }
+
+        .wheel2 {
+            right: 18px;
+            bottom: 93px;
+        }
+
+        @keyframes moveCar {
+            0% {
+                left: -200px;
+            }
+            100% {
+                left: 100%;
+            }
+        }
+
+        @keyframes rotateWheels {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    
+</head>
+<body>
+<audio controls src="gaddisound.opus" type="audio/opus"></audio>
+    <div class="road"></div>
+
+    <div class="car-container">
+        <img src="fortuner.png" class="car" alt="Car">
+        <img src="wheel.png" class="wheel1" alt="Wheel">
+        <img src="wheel.png" class="wheel2" alt="Wheel">
+    </div>
+
+</body>
+</html>
