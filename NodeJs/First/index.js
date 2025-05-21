@@ -1,61 +1,61 @@
-const express= require('express')
-const app= express()
+// 
+const express = require('express');
+const mongoose = require('mongoose');
+const app = express();
+
+
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-require('./Config/Mongodb.js')
- 
-// console.log(app)
-// app.method('route','function')
 
- app.get('/',(req,res)=>{
-    res.send('<h2>Hello api</h2>')
- })
 
- app.get('/Home',(req,res)=>{
-    res.json({
-        'status':200,
-        'success':true,
-        'message':'hello hy'
+app.use('/user',require('./routes/userRoute'))
+
+mongoose.connect("mongodb://localhost:27017/Batch1", {
+})
+.then(() => {
+  console.log("Database connected successfully");
+})
+.catch((err) => {
+  console.error("Error in connection:", err);
+});
+
+const friendSchema = new mongoose.Schema({
+  friend_name: { type: String, default: '' },
+  friend_email: { type: String, default: '' },
+  friend_phone: { type: String, default: '123321221' }
+});
+
+const Friend = mongoose.model('Friend', friendSchema);
+app.get('/', (req, res) => {
+  res.json({ message: "User Page" });
+});
+
+app.post('/friend', (req, res) => {
+  const friendData = new Friend({
+    friend_name: req.body.fname,
+    friend_email: req.body.femail,
+    friend_phone: req.body.fphone
+  });
+
+  friendData.save()
+    .then((data) => {
+      res.json({ 
+        success: true, 
+        message: "Data inserted successfully.",
+        data 
+      });
     })
- })
- 
- app.get('/sum',(req,res)=>{
-     let a=parseInt(req.query.num1)
-     let b=parseInt(req.query.num2)
-     let c= a+b
-     res.json({
-         'status':200,
-         'success':true,
-         'message':c
-        })
-    })
+    .catch((err) => {
+      res.status(500).json({ 
+        success: false,
+        message: "Failed to insert data.",
+        error: err.message 
+      });
+    });
+});
 
-    app.get('/myhero',(req,res)=>{
-        let a=parseInt(req.query.a) 
-        // let b=req.query.heroname
-        const heroname = 'arun'
-        if (a==0){
-            res.send('i have no hero for today, see you tomorrow')
-        }
-        else {
-            let b="";
-            for(let i = 0;i<a;i++){
-                b +=heroname+ '\n';
-            }
-            res.send(b)
-        }
-    })
-    
-    app.get('/*',(req,res)=>{
-       res.send('404 page is not found')
-    })
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+   console.log("server is started ")
+});
 
-    app.post('/',(req,res)=>{
-        console.log(req.body)
-        res.send(req.body)
-    })
-
-
-
- app.listen(3000,()=>{
-    console.log("app is running on port no",3000)
- })

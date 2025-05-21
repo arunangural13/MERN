@@ -1,30 +1,27 @@
-const router=require('express').router()
-const Friend=require('../api/friendModel')
-console.log("router page")
+
+const router =require ('express').Router()
+const mongoose = require('mongoose');
+
+const friendController = require ('../api/friendController')
 
 
 
-router.post('/friend',(req,res)=>{
-    let friendData= new Friend()
-    friendDatadata.Friend_name=req.body.Fname
-    friendDatadata.Friend_name=req.body.Femail
-    friendDatadata.Friend_name=req.body.fphone
-    friendData.save().then(()=>{
-        res.json({
-            status:200,
-            status:true,
-            data:friendData
 
-    }).catch(err=>{
-        res.json({
-            message:err
-            
-        })
-       
-    })
-    
+// const friendSchema = new mongoose.Schema({
+//   friend_name: { type: String, default: '' },
+//   friend_email: { type: String, default: '' },
+//   friend_phone: { type: String, default: '123321221' }
+// });
 
-    })
-})
+// const Friend = mongoose.model('Friend', friendSchema);
+// app.get('/', (req, res) => {
+//   res.json({ message: "User Page" });
+// });
+
+router.post('/friend',friendController.addFriend ) 
+router.post('/allfriend',friendController.getFriends)
+router.post('/singlefriend',friendController.singleFriend)
+ 
 
 module.exports=router
+

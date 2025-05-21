@@ -3,7 +3,7 @@ export default function News(){
     return(
         <>
          {/* <!-- header section start --> */}
-      <div class="header_section">
+      {/* <div class="header_section">
          <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand"/><a href="index.html"><img src="assets/images/logo.png"/></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,7 +39,7 @@ export default function News(){
                  <Link to={'/Mission'} >
 
                   <li className="nav-item">
-                     <a className="nav-link" href="">Mission</a> </li>
+                     <a className="nav-link" href=""> Our Mission</a> </li>
                   </Link>
                </ul>
                <form class="form-inline my-2 my-lg-0">
@@ -48,7 +48,7 @@ export default function News(){
                </form>
             </div>
          </nav>
-      </div>
+      </div> */}
       {/* <!-- header section end -->
       <!-- news section start --> */}
       <div class="news_section layout_padding">

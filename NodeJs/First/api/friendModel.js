@@ -1,7 +1,9 @@
-const mongoose =(require('mongoose'))
-const friendschema= new mongoose.schema({
-    friend_name:{default:'',type:string},
-    friend_email:{default:'',type:string},
-    friend_phone:{default:'123321221',type:int}
+const mongoose = require('mongoose')
+
+const friendSchema= new mongoose.Schema({
+    friend_name:{default:'',type:String},
+    friend_email:{type:String,default:''},
+    friend_phone:{type:String,default:'123321221'}
 })
-module.exports=mongoose.model("friend",friendschema)
+
+module.exports= mongoose.model("friend",friendSchema)
