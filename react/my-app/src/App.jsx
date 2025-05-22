@@ -1,11 +1,8 @@
 
 import { BrowserRouter,Route,Routes } from 'react-router-dom'
-<<<<<<< HEAD
 
 import axios from 'axios'
 
-=======
->>>>>>> 0d36670 (both file commit)
 import Home from './components/Home'
 import About from './components/About'
 import Donate from './components/Donate'
@@ -14,7 +11,6 @@ import Contact from './components/Contact'
 import Mission from './components/Mission'
 import Layout from './components/layouts/Layout'
 import Login from './components/Login'
-<<<<<<< HEAD
 import Signup from './components/Signup'
 
 import UserDashboard from './components/UserDashboard'
@@ -35,10 +31,6 @@ import DonorFundraiser from './components/DonorFundraiser'
 import DonorAppoinment from './components/Donorappointment'
 import ViewDonorAppoinment from './components/ViewDonorAppointment'
 import ViewDonor from './components/ViewDonor'
-=======
-import Signup from './components/Signin'
-
->>>>>>> 0d36670 (both file commit)
 
 
 function App() {
@@ -59,7 +51,6 @@ function App() {
   <Route path={'/Mission'} element={<Mission/>} />
   <Route path= {'/Login'} element ={<Login/>}/>
   <Route path ={'/Signup'} element= {<Signup/>}/> 
-<<<<<<< HEAD
 </Route>
 
 <Route path ={'/user/dashboard'} element= {<UserDashboard/>}/> 
@@ -86,11 +77,6 @@ function App() {
 {/* USER DASHBOARD ROUTES */}
 <Route path ={'/viewdonor'} element ={<ViewDonor/>}/>
 
-=======
-
-</Route>
-
->>>>>>> 0d36670 (both file commit)
 </Routes>
 </BrowserRouter>
 

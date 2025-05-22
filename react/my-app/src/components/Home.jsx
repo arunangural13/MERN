@@ -1,18 +1,9 @@
-<<<<<<< HEAD
  import {Link} from "react-router-dom"
-=======
-import {Link} from "react-router-dom"
->>>>>>> 0d36670 (both file commit)
 import Footer from "./layouts/Footer"
 import Header from "./layouts/Header"
 export default function Home(){
     return(
-      
   <>
-
-    
-
-
       {/* <!-- banner section start --> */}
       <div className="banner_section layout_padding">
          <div className="container">
@@ -22,42 +13,27 @@ export default function Home(){
                   <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
                   <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
                   <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
-<<<<<<< HEAD
                   {/* <li data-target="#carouselExampleIndicators" data-slide-to="4"></li> */}
-=======
-                  <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
->>>>>>> 0d36670 (both file commit)
                </ol>
                <div className="carousel-inner">
                   <div className="carousel-item active">
                      <div className="row">
                         <div className="col-sm-12">
-<<<<<<< HEAD
                            <h1 className="banner_taital">HELP THE HELPLESS</h1>
                            <p className="banner_text">"Every child deserves a chance to dream, learn, and grow—your support can turn their struggles into strength and give them the future they deserve." </p>
-=======
-                           <h1 className="banner_taital">HELP Needy people</h1>
-                           <p className="banner_text">Suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going </p>
->>>>>>> 0d36670 (both file commit)
                            <div className="read_bt"><a href="#">Read More</a></div>
                         </div>
                      </div>
                   </div>
                   <div className="carousel-item">
                      <div className="col-sm-12">
-<<<<<<< HEAD
                         <h1 className="banner_taital">Help change lives.</h1>
                         <p className="banner_text">"When you lend a hand to a child in need, you're not just giving support—you’re giving hope, dignity, and a reason to smile." </p>
-=======
-                        <h1 className="banner_taital">Help Needy People</h1>
-                        <p className="banner_text">Suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going </p>
->>>>>>> 0d36670 (both file commit)
                         <div className="read_bt"><a href="#">Read More</a></div>
                      </div>
                   </div>
                   <div className="carousel-item">
                      <div className="col-sm-12">
-<<<<<<< HEAD
                         <h1 className="banner_taital">Help bring hope.</h1>
                         <p className="banner_text">"Help turn tears into laughter and struggles into opportunities for children who deserve a brighter tomorrow." </p>
                         <div className="read_bt"><a href="#">Read More</a></div>
@@ -72,31 +48,11 @@ export default function Home(){
                   </div>
                   {/* <div className="carousel-item">
                      <div className="col-sm-12">
-=======
->>>>>>> 0d36670 (both file commit)
                         <h1 className="banner_taital">Help Poor Child</h1>
                         <p className="banner_text">Suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going </p>
                         <div className="read_bt"><a href="#">Read More</a></div>
                      </div>
-<<<<<<< HEAD
                   </div> */}
-=======
-                  </div>
-                  <div className="carousel-item">
-                     <div className="col-sm-12">
-                        <h1 className="banner_taital">Help Poor Child</h1>
-                        <p className="banner_text">Suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going </p>
-                        <div className="read_bt"><a href="#">Read More</a></div>
-                     </div>
-                  </div>
-                  <div className="carousel-item">
-                     <div className="col-sm-12">
-                        <h1 className="banner_taital">Help Poor Child</h1>
-                        <p className="banner_text">Suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going </p>
-                        <div className="read_bt"><a href="#">Read More</a></div>
-                     </div>
-                  </div>
->>>>>>> 0d36670 (both file commit)
                </div>
             </div>
          </div>

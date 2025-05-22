@@ -76,7 +76,6 @@ export default function About() {
             <div className="col-sm-8">
               <h2 className="about_taital">About Charity</h2>
               <p className="about_text">
-<<<<<<< HEAD
                Giving to those in need is more than just an act of
                 kindness—it’s a powerful way to change lives and
                  bring hope to the vulnerable. Every donation, 
@@ -87,18 +86,6 @@ export default function About() {
                     Your generosity can light the path to a better future,
                      turning struggles into opportunities and dreams into reality. 
                      Together, we can make a lasting difference.
-=======
-                Many variations of passages of Lorem Ipsum are available, but
-                the majority have suffered alteration in some form, by injected
-                humor, or randomized words which don't look even slightly
-                believable. If you many variations of passages of Lorem Ipsum
-                available, but the majority have suffered alteration in some
-                form, by injected humor, or randomized words which don't look
-                even slightly believable. If you many variations of passages of
-                Lorem Ipsum available, but the majority have suffered alteration
-                in some form, by injected humor, or randomized words which don't
-                look even slightly believable.
->>>>>>> 0d36670 (both file commit)
               </p>
               <div className="readmore_bt">
                 <a href="#">Read more</a>
