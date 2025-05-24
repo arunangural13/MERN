@@ -31,6 +31,9 @@ import DonorFundraiser from './components/DonorFundraiser'
 import DonorAppoinment from './components/Donorappointment'
 import ViewDonorAppoinment from './components/ViewDonorAppointment'
 import ViewDonor from './components/ViewDonor'
+import ForgetPassword from './components/ForgetPassword'
+// import ForgotPassword from './components/ForgotPassword' 
+import ResetPassword from './components/ResetPassword'
 
 
 function App() {
@@ -76,6 +79,8 @@ function App() {
 
 {/* USER DASHBOARD ROUTES */}
 <Route path ={'/viewdonor'} element ={<ViewDonor/>}/>
+<Route path ={'/forget/password'} element ={<ForgetPassword/>}/>
+<Route path ={'/resetpassword'} element ={<ResetPassword/>}/>
 
 </Routes>
 </BrowserRouter>

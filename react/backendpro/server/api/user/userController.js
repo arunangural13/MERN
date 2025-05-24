@@ -1,6 +1,7 @@
 const User  = require("./userModel")
 const bcrypt = require("bcryptjs")
 const jwt = require("jsonwebtoken")
+const sendMail = require("../../config/mailer")
 require("dotenv").config()
 
 const createUser = async(req,res) =>{
@@ -286,4 +287,69 @@ const deletedUser = async(req,res) =>{
     }
 }
 
-module.exports = {createUser,loginUser,getAllUser,getUserById,updatedUser,deletedUser}
+const SendOtp = async(req,res) =>{
+  try{
+    const {email} = req.body
+    const user = await User.findOne({email})
+    if(!user){
+      return res.json({
+        status:400,
+        success:false,
+        message:"user not found"
+      })
+    }
+
+    const otp = Math.floor(100000+Math.random()*900000).toString()
+    const expiry = Date.now() + 5 * 60 * 1000 // 5 minute
+    user.otp = otp
+    user.otpExpiry = expiry
+    await user.save()
+    const subject = "you otp code"
+    const message = ` your otp code is ${otp}.it is expire with in 5 minute`
+    const result = await sendMail(email,subject,message)
+    console.log(otp)
+    res.json({
+      status:200,
+      success:true,
+      message:"successfully",
+      data:result
+    })
+  }catch(err){
+    res.json({
+      status:500,
+      success:false,
+      message:"internal server error"
+    })
+  }
+}
+
+
+const verifyOtp = async(req,res) =>{
+  try{
+    const {email,otp,newPassword} = req.body 
+    const user = await User.findOne({email})
+    if(!user || user.otp !== otp || Date.now() >user.otpExpiry){
+      return res.json({
+        status:400,
+        success:false,
+        message:"invalid or expired otp"
+      })
+    }
+    
+    user.password = await bcrypt.hash(newPassword,10);
+    user.otp = null 
+    user.otpExpiry = null 
+    await user.save()
+    res.json({
+      message:"password reset successfully"
+    })
+
+  }catch(err){
+     res.json({
+      message:"password is not reset"
+     })
+  }
+}
+
+
+module.exports = {createUser,loginUser,getAllUser,getUserById,updatedUser,deletedUser,SendOtp,verifyOtp}

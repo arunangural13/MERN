@@ -113,7 +113,7 @@ const ViewFundRaise = () => {
               <tbody>
                 {funds.map((fund) => (
                   <tr key={fund._id}>
-                    <td>{fund.tittle}</td>
+                    <td>{fund.title}</td>
                     <td>{fund.description}</td>
                     <td>{fund.startDate}</td>
                     <td>{fund.endDate}</td>

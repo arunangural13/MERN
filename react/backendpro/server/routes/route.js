@@ -4,7 +4,7 @@ const routes = express.Router()
 const upload = require("../middleware/multer")
 
 const {adminLogin} = require("../config/seed")
-const { createUser, getAllUser, deletedUser, getUserById, loginUser, updatedUser } = require("../api/user/userController")
+const { createUser, getAllUser, deletedUser, getUserById, loginUser, updatedUser, SendOtp, verifyOtp } = require("../api/user/userController")
 const { addAppointment, getAllAppointment, getAppointmentById, updatedAppointmentById, deleteAppointmentById } = require("../api/donor/donorController")
 const { addFund, getFundById, getAllFund, updatefFundById, deleteFund } = require("../api/fundraising/fundcontroller")
 const { createMember, getallMember, getMemberById, updateMemberById, deleteMemberById } = require("../api/member/memberController")
@@ -21,6 +21,9 @@ routes.post("/getuserbyid",getUserById)
 routes.post("/getalluser",getAllUser)
 routes.post("/deleteuser",deletedUser)
 routes.post("/updateuser",updatedUser)
+routes.post("/sendotp",SendOtp)
+routes.post("/verifyotp",verifyOtp)
+
 
 // DONOR ROUTES || APPOINTMENT ROUTES
 routes.post("/addappointment",addAppointment)

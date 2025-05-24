@@ -1,3 +1,5 @@
+
+
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -6,132 +8,138 @@ import "react-toastify/dist/ReactToastify.css";
 
 const ViewAppointment = () => {
   const navigate = useNavigate();
-
-  const [appointments,setAppointments] = useState("")
+  const [appointments, setAppointments] = useState([]);
 
   useEffect(() => {
-    const fetchAppointments = async () => {
-      try {
-        const res = await axios.post("http://localhost:2000/api/getallappointment");
-        console.log(res.data.data)
-        setAppointments(res.data.data);
-      } catch (error) {
-        console.error("Error fetching appointments:", error);
-        toast.error("Failed to load appointments");
-      }
-    };
-
     fetchAppointments();
   }, []);
 
+  const fetchAppointments = async () => {
+    try {
+      const response = await axios.post("http://localhost:2000/api/getallappointment");
+      if (response.data && response.data.data) {
+        setAppointments(response.data.data);
+      } else {
+        toast.error("Invalid response from server");
+      }
+    } catch (error) {
+      console.error("Error fetching appointments:", error);
+      toast.error("Failed to load appointments");
+    }
+  };
+
+  const updateStatus = async (id, status) => {
+    try {
+      const response = await axios.post("http://localhost:2000/api/updateappointmentbyid", {
+        id,
+        status,
+      });
+  console.log(response.data.success)
+      if (response.data.success) {
+        toast.success(`Appointment ${status}`);
+        fetchAppointments();
+      } else {
+        toast.error("Failed to update appointment status");
+      }
+    } catch (error) {
+      console.error("Error updating appointment:", error);
+      toast.error("Server error while updating status");
+    }
+  };
 
   const handleLogout = () => {
-    localStorage.removeItem("userId");
-    localStorage.removeItem("userType");
-    localStorage.removeItem("token");
+    localStorage.clear();
     navigate("/login");
   };
 
-  
   return (
-    <div>
+    <div className="d-flex">
       <ToastContainer />
+
       {/* Sidebar */}
       <aside
-        className="bg-light p-3 shadow-sm"
+        className="bg-light p-3 shadow"
         style={{
+          width: "250px",
+          height: "100vh",
           position: "fixed",
           top: 0,
           left: 0,
-          width: "250px",
-          height: "90vh",
-          zIndex: 1000,
           overflowY: "auto",
         }}
       >
-        <div className="d-flex flex-column justify-content-between h-100">
-          <div>
-            <h4 className="text-center text-danger fw-bold mb-4">charity system</h4>
-            <ul className="nav flex-column">
-              {[
-                { name: "ADD STAFF", path: "/addstaff" },
-                { name: "VIEW STAFF", path: "/viewstaff" },
-                { name: "ADD MEMBER TYPE", path: "/addmembertype" },
-                { name: "VIEW MEMBER TYPE", path: "/viewmembertype" },
-                { name: "ADD MEMBER", path: "/addmember" },
-                { name: "VIEW MEMBER", path: "/viewmember" },
-                { name: "FUND RAISE", path: "/fundraise" },
-                { name: "VIEW FUND RAISE", path: "/viewfundraise" },
-                { name: "APPOINTMENT", path: "/appointment" },
-                { name: "VIEW APPOINTMENT", path: "/viewappointment" },
-              ].map((item) => (
-                <li key={item.name} className="nav-item mb-3">
-                  <button
-                    onClick={() => navigate(item.path)}
-                    className="btn btn-outline-primary w-100 fw-semibold"
-                  >
-                    {item.name}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <button
-            className="btn btn-danger fw-bold w-100"
-            onClick={handleLogout}
-          >
-            LOG OUT
-          </button>
-        </div>
+        <h4 className="text-center text-danger fw-bold mb-4">Charity System</h4>
+        <ul className="nav flex-column mb-auto">
+          {[
+            { name: "ADD STAFF", path: "/addstaff" },
+            { name: "VIEW STAFF", path: "/viewstaff" },
+            { name: "ADD MEMBER TYPE", path: "/addmembertype" },
+            { name: "VIEW MEMBER TYPE", path: "/viewmembertype" },
+            { name: "ADD MEMBER", path: "/addmember" },
+            { name: "VIEW MEMBER", path: "/viewmember" },
+            { name: "FUND RAISE", path: "/fundraise" },
+            { name: "VIEW FUND RAISE", path: "/viewfundraise" },
+            { name: "APPOINTMENT", path: "/appointment" },
+            { name: "VIEW APPOINTMENT", path: "/viewappointment" },
+          ].map((item) => (
+            <li key={item.name} className="nav-item mb-3">
+              <button
+                className="btn btn-outline-primary w-100"
+                onClick={() => navigate(item.path)}
+              >
+                {item.name}
+              </button>
+            </li>
+          ))}
+        </ul>
+        <button className="btn btn-danger fw-bold w-100" onClick={handleLogout}>
+          LOG OUT
+        </button>
       </aside>
 
       {/* Main Content */}
-       <main
-        className="p-5 bg-white"
+      <main
+        className="p-4"
         style={{
           marginLeft: "250px",
+          width: "100%",
           minHeight: "100vh",
+          backgroundColor: "#fff",
         }}
       >
-        {/* <h2 className="fw-bold text-danger text-center">Request Appointment</h2> */}
-        
-        
-        <hr className="my-3" />
-        <h3 className ="fw-bold text-danger text-center">All Appointments</h3>
-
-
-        <div className="table-responsive mt-3">
-          <table className="table table-bordered">
+        <h3 className="fw-bold text-danger text-center">All Appointments</h3>
+        <hr />
+        <div className="table-responsive mt-4">
+          <table className="table table-bordered table-hover">
             <thead className="table-primary">
               <tr>
-                <th>S.NO</th>
+                <th>S.No</th>
                 <th>For</th>
                 <th>Reason</th>
                 <th>Date</th>
                 <th>Time</th>
                 <th>Status</th>
+                <th>Actions</th>
               </tr>
             </thead>
             <tbody>
               {appointments.length === 0 ? (
                 <tr>
-                  <td colSpan="6" className="text-center">
+                  <td colSpan="7" className="text-center">
                     No appointments found
                   </td>
                 </tr>
               ) : (
                 appointments.map((app, index) => (
-                  <tr key={index}>
+                  <tr key={app._id}>
                     <td>{index + 1}</td>
                     <td>{app.appointmentfor}</td>
                     <td>{app.reasonforappointment}</td>
                     <td>{app.appointmentdate}</td>
                     <td>{app.appointmenttime}</td>
-                    
-
                     <td>
                       <span
-                        className={`badge ${
+                        className={`badge px-3 py-2 ${
                           app.status === "approved"
                             ? "bg-success"
                             : app.status === "rejected"
@@ -141,6 +149,21 @@ const ViewAppointment = () => {
                       >
                         {app.status}
                       </span>
+                    </td>
+                    <td>
+                      <button
+                        className="btn btn-success btn-sm me-2"
+                        onClick={() => updateStatus(app._id, "approved")}
+                        disabled={app.status === "approved"}
+                      >
+                        Approve
+                      </button>
+                      <button
+                        className="btn btn-danger btn-sm"
+                        onClick={() => updateStatus(app._id, "rejected")}
+                        disabled={app.status === "rejected"}  >
+                        Reject
+                      </button>
                     </td>
                   </tr>
                 ))
@@ -154,3 +177,4 @@ const ViewAppointment = () => {
 };
 
 export default ViewAppointment;
+

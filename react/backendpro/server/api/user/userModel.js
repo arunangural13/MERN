@@ -38,8 +38,17 @@ const userSchema = new mongoose.Schema({
         type:String,
         enum:["admin","user","donor"],
         required:true
-    }
+    },
+    otp:{
+        type: String,
+        default:""
+    },
+    otpExpiry:{
+        type: Date,
+        default:""
+    }
 })
+
 
 const User = mongoose.models.User || mongoose.model("User",userSchema)
 module.exports = User
